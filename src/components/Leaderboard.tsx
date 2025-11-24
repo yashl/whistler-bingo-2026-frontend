@@ -7,8 +7,6 @@ interface LeaderboardProps {
 }
 
 const participants = [
-    { name: "Yash", score: 0 },
-    { name: "Kamini", score: 0 },
     { name: "Aditi", score: 0 },
     { name: "Dhruv T", score: 0 },
     { name: "Jess", score: 0 },
@@ -22,6 +20,7 @@ const participants = [
     { name: "Apoorva", score: 0 },
     { name: "Vignesh", score: 0 },
     { name: "Dhruv S", score: 0 },
+    { name: "Vasu", score: 0 },
 ];
 
 export default function Leaderboard({ isOpen, onClose }: LeaderboardProps) {
