@@ -2,16 +2,16 @@ import { motion } from 'framer-motion';
 
 const schedule = [
     {
-        day: "Wednesday, Feb 5",
+        day: "Thursday, Feb 5",
         title: "Arrival & Birthday Kickoff",
         activities: [
             "Arrive to Whistler 🏔️",
-            "Check-in at Crystal Lodge 🏨",
+            "Check-in at The Crystal Lodge 🏨",
             "Midnight Birthday Celebration for Kamini 🎂✨"
         ]
     },
     {
-        day: "Thursday, Feb 6",
+        day: "Friday, Feb 6",
         title: "Whistler & Apres",
         activities: [
             "Ski on Whistler Side ⛷️",
@@ -20,7 +20,7 @@ const schedule = [
         ]
     },
     {
-        day: "Friday, Feb 7",
+        day: "Saturday, Feb 7",
         title: "Blackcomb Adventure",
         activities: [
             "Ski on Blackcomb Side 🏂",
@@ -29,7 +29,7 @@ const schedule = [
         ]
     },
     {
-        day: "Saturday, Feb 8",
+        day: "Sunday, Feb 8",
         title: "Seattle Bound",
         activities: [
             "Morning Coffee & Pastries ☕",
