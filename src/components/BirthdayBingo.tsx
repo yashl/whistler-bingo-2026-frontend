@@ -1,155 +1,110 @@
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import confetti from 'canvas-confetti';
 
 export default function BirthdayBingo() {
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
-    function calculateTimeLeft() {
-        // Target date: Feb 6, 2026 00:00:00
-        const targetDate = new Date('2026-02-06T00:00:00');
-        const now = new Date();
-        const difference = targetDate.getTime() - now.getTime();
-
-        if (difference <= 0) {
-            return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-        }
-
-        return {
-            days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-            minutes: Math.floor((difference / 1000 / 60) % 60),
-            seconds: Math.floor((difference / 1000) % 60),
-        };
-    }
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setTimeLeft(calculateTimeLeft());
-        }, 1000);
-
-        // Trigger confetti on load
-        const duration = 3 * 1000;
-        const animationEnd = Date.now() + duration;
-        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
-        const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
-
-        const interval: any = setInterval(function () {
-            const timeLeft = animationEnd - Date.now();
-
-            if (timeLeft <= 0) {
-                return clearInterval(interval);
-            }
-
-            const particleCount = 50 * (timeLeft / duration);
-            confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
-            confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
-        }, 250);
-
-        return () => {
-            clearInterval(timer);
-            clearInterval(interval);
-        };
-    }, []);
-
     return (
-        <section className="py-24 min-h-screen bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-indigo-900 via-purple-900 to-pink-900 text-white overflow-hidden relative">
-            {/* Background Elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-                <div className="absolute top-0 right-1/4 w-96 h-96 bg-pink-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-                <div className="absolute -bottom-32 left-1/3 w-96 h-96 bg-indigo-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-            </div>
+        <section className="py-24 bg-gradient-to-b from-slate-50 to-blue-50 relative overflow-hidden">
+            {/* Decorative Blobs */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
 
             <div className="container mx-auto px-4 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <span className="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm font-medium mb-4 text-pink-200">
-                        🎉 Celebrating Kamini's Birthday
+                    <span className="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-sm font-bold mb-4">
+                        🎉 The Main Event
                     </span>
-                    <h2 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-300 mb-6 drop-shadow-lg">
-                        Birthday Bingo
+                    <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6">
+                        Birthday Bingo 🎂
                     </h2>
-                    <p className="text-xl md:text-2xl text-purple-100 max-w-2xl mx-auto font-light leading-relaxed">
-                        The ultimate showdown begins soon! Get ready to compete for glory (and prizes).
+                    <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                        Think you're the Kamini expert? Put your knowledge to the test and leave the others in the powder! 💨
                     </p>
                 </motion.div>
 
-                <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12">
-                    {/* Rules Section */}
+                <div className="max-w-4xl mx-auto">
                     <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-3xl shadow-2xl"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-slate-100"
                     >
-                        <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                            <span className="text-3xl">📜</span> The Rules
+                        <h3 className="text-2xl font-bold text-slate-900 mb-8 flex items-center justify-center gap-3">
+                            <span className="text-3xl">📜</span> The Rules of the Slopes
                         </h3>
-                        <ul className="space-y-6 text-purple-50">
-                            <li className="flex items-start gap-4">
-                                <span className="bg-gradient-to-br from-pink-500 to-purple-600 text-white rounded-xl w-8 h-8 flex items-center justify-center shrink-0 text-sm font-bold shadow-lg">1</span>
+                        <div className="space-y-6">
+                            {/* Rule 1 */}
+                            <div className="flex flex-col md:flex-row gap-6 p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                                <div className="bg-blue-100 text-blue-600 rounded-2xl w-12 h-12 flex items-center justify-center shrink-0 text-xl font-bold">1</div>
                                 <div>
-                                    <span className="font-bold text-white block mb-1">Timing is Everything</span>
-                                    Questions drop every <strong>3 hours</strong> starting midnight Feb 6th. Last one at 9:00 PM.
-                                </div>
-                            </li>
-                            <li className="flex items-start gap-4">
-                                <span className="bg-gradient-to-br from-pink-500 to-purple-600 text-white rounded-xl w-8 h-8 flex items-center justify-center shrink-0 text-sm font-bold shadow-lg">2</span>
-                                <div>
-                                    <span className="font-bold text-white block mb-1">Points Per Question</span>
-                                    <div className="grid grid-cols-2 gap-2 mt-2 text-sm">
-                                        <div className="bg-white/5 rounded-lg p-2 border border-white/10">🥇 1st: <span className="font-bold text-yellow-300">10 pts</span></div>
-                                        <div className="bg-white/5 rounded-lg p-2 border border-white/10">🥈 2nd: <span className="font-bold text-gray-300">8 pts</span></div>
-                                        <div className="bg-white/5 rounded-lg p-2 border border-white/10">🥉 3rd: <span className="font-bold text-orange-300">5 pts</span></div>
-                                        <div className="bg-white/5 rounded-lg p-2 border border-white/10">Others: <span className="font-bold text-pink-300">2 pts</span></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="flex items-start gap-4">
-                                <span className="bg-gradient-to-br from-pink-500 to-purple-600 text-white rounded-xl w-8 h-8 flex items-center justify-center shrink-0 text-sm font-bold shadow-lg">3</span>
-                                <div>
-                                    <span className="font-bold text-white block mb-1">Win Big</span>
-                                    The person with the highest total points at the end wins the grand prize! 🏆
-                                </div>
-                            </li>
-                        </ul>
-                    </motion.div>
-
-                    {/* Countdown Section */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.4 }}
-                        className="relative"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-br from-pink-500 to-purple-600 rounded-3xl transform rotate-3 opacity-50 blur-lg"></div>
-                        <div className="relative bg-gradient-to-br from-pink-600 to-purple-700 p-8 rounded-3xl shadow-2xl border border-white/20 text-center h-full flex flex-col justify-center">
-                            <h3 className="text-2xl font-bold text-white mb-8 uppercase tracking-widest">Game Starts In</h3>
-                            <div className="grid grid-cols-4 gap-4 w-full mb-8">
-                                <div className="flex flex-col items-center bg-black/20 rounded-xl p-3 backdrop-blur-sm">
-                                    <span className="text-3xl md:text-5xl font-black text-white mb-1 font-mono">{timeLeft.days}</span>
-                                    <span className="text-[10px] md:text-xs uppercase tracking-wider text-pink-200 font-bold">Days</span>
-                                </div>
-                                <div className="flex flex-col items-center bg-black/20 rounded-xl p-3 backdrop-blur-sm">
-                                    <span className="text-3xl md:text-5xl font-black text-white mb-1 font-mono">{timeLeft.hours}</span>
-                                    <span className="text-[10px] md:text-xs uppercase tracking-wider text-pink-200 font-bold">Hours</span>
-                                </div>
-                                <div className="flex flex-col items-center bg-black/20 rounded-xl p-3 backdrop-blur-sm">
-                                    <span className="text-3xl md:text-5xl font-black text-white mb-1 font-mono">{timeLeft.minutes}</span>
-                                    <span className="text-[10px] md:text-xs uppercase tracking-wider text-pink-200 font-bold">Mins</span>
-                                </div>
-                                <div className="flex flex-col items-center bg-black/20 rounded-xl p-3 backdrop-blur-sm">
-                                    <span className="text-3xl md:text-5xl font-black text-white mb-1 font-mono">{timeLeft.seconds}</span>
-                                    <span className="text-[10px] md:text-xs uppercase tracking-wider text-pink-200 font-bold">Secs</span>
+                                    <h4 className="text-lg font-bold text-slate-900 mb-2">Clockwork Drops ⏰</h4>
+                                    <p className="text-slate-600 leading-relaxed">
+                                        Questions drop every <strong>3 hours</strong> starting midnight Feb 6th. Set your alarms—don't be late to the gate!
+                                    </p>
                                 </div>
                             </div>
-                            <div className="text-pink-100 text-sm font-medium bg-white/10 py-2 px-4 rounded-full inline-block mx-auto">
-                                🚀 First drop: Midnight, Feb 6th
+
+                            {/* Rule 2 */}
+                            <div className="flex flex-col md:flex-row gap-6 p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                                <div className="bg-blue-100 text-blue-600 rounded-2xl w-12 h-12 flex items-center justify-center shrink-0 text-xl font-bold">2</div>
+                                <div>
+                                    <h4 className="text-lg font-bold text-slate-900 mb-2">The Finish Line 🏁</h4>
+                                    <p className="text-slate-600 leading-relaxed">
+                                        Last question drops on <strong>Feb 6th, 9:00 PM</strong>. It's a marathon, not a sprint. Pace yourself!
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Rule 3 - Podium Points */}
+                            <div className="flex flex-col md:flex-row gap-6 p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                                <div className="bg-blue-100 text-blue-600 rounded-2xl w-12 h-12 flex items-center justify-center shrink-0 text-xl font-bold">3</div>
+                                <div className="w-full">
+                                    <h4 className="text-lg font-bold text-slate-900 mb-4">Podium Points 🏆</h4>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        <div className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-yellow-100 to-yellow-50 border border-yellow-200">
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-xl">🥇</span>
+                                                <span className="font-bold text-yellow-800">1st Place</span>
+                                            </div>
+                                            <span className="font-black text-yellow-700 bg-white/60 px-2 py-1 rounded-lg text-sm">10 pts</span>
+                                        </div>
+                                        <div className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-slate-200 to-slate-100 border border-slate-300">
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-xl">🥈</span>
+                                                <span className="font-bold text-slate-700">2nd Place</span>
+                                            </div>
+                                            <span className="font-black text-slate-600 bg-white/60 px-2 py-1 rounded-lg text-sm">8 pts</span>
+                                        </div>
+                                        <div className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-amber-200 to-amber-100 border border-amber-300">
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-xl">🥉</span>
+                                                <span className="font-bold text-amber-800">3rd Place</span>
+                                            </div>
+                                            <span className="font-black text-amber-700 bg-white/60 px-2 py-1 rounded-lg text-sm">5 pts</span>
+                                        </div>
+                                        <div className="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200">
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-xl">🎿</span>
+                                                <span className="font-medium text-slate-600">Participation</span>
+                                            </div>
+                                            <span className="font-bold text-slate-500 bg-slate-50 px-2 py-1 rounded-lg text-sm border border-slate-100">2 pts</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Rule 4 */}
+                            <div className="flex flex-col md:flex-row gap-6 p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                                <div className="bg-blue-100 text-blue-600 rounded-2xl w-12 h-12 flex items-center justify-center shrink-0 text-xl font-bold">4</div>
+                                <div>
+                                    <h4 className="text-lg font-bold text-slate-900 mb-2">King/Queen of the Hill 👑</h4>
+                                    <p className="text-slate-600 leading-relaxed">
+                                        The person with the highest total points at the end wins the grand prize!
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </motion.div>
