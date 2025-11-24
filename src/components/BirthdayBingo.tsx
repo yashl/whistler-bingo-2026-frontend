@@ -1,11 +1,17 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Leaderboard from './Leaderboard';
 
 export default function BirthdayBingo() {
+    const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false);
+
     return (
         <section className="py-24 bg-gradient-to-b from-slate-50 to-blue-50 relative overflow-hidden">
             {/* Decorative Blobs */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+
+            <Leaderboard isOpen={isLeaderboardOpen} onClose={() => setIsLeaderboardOpen(false)} />
 
             <div className="container mx-auto px-4 relative z-10">
                 <motion.div
@@ -20,9 +26,18 @@ export default function BirthdayBingo() {
                     <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6">
                         Birthday Bingo 🎂
                     </h2>
-                    <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                    <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-8">
                         Think you're the Kamini expert? Put your knowledge to the test and leave the others in the powder! 💨
                     </p>
+
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => setIsLeaderboardOpen(true)}
+                        className="inline-flex items-center gap-2 bg-white text-slate-900 px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all border border-slate-100"
+                    >
+                        <span className="text-xl">🏆</span> View Leaderboard
+                    </motion.button>
                 </motion.div>
 
                 <div className="max-w-4xl mx-auto">
