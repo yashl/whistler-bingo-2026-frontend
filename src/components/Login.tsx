@@ -12,7 +12,7 @@ export default function Login({ onLogin }: LoginProps) {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (password.toLowerCase() === 'whistler2025') {
+        if (password.toLowerCase() === 'whistler2026') {
             onLogin();
         } else {
             setError(true);
@@ -58,7 +58,7 @@ export default function Login({ onLogin }: LoginProps) {
                             animate={{ opacity: 1 }}
                             className="text-red-300 text-sm text-center"
                         >
-                            Incorrect password. Try 'whistler2025'
+                            Incorrect password. Try 'whistler2026'
                         </motion.p>
                     )}
 

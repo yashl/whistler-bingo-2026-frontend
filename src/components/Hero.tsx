@@ -23,7 +23,7 @@ export default function Hero() {
                     transition={{ delay: 0.5 }}
                     className="text-blue-200 text-lg md:text-xl font-medium tracking-widest uppercase mb-4"
                 >
-                    Feb 20 - 24, 2025
+                    Feb 5 - 8, 2026
                 </motion.p>
 
                 <motion.h1

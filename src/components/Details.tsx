@@ -17,7 +17,7 @@ const details = [
     {
         icon: Calendar,
         title: "Dates",
-        description: "Feb 20 - 24, 2025",
+        description: "Feb 5 - 8, 2026",
         subtext: "Thursday to Monday"
     }
 ];
