@@ -3,7 +3,7 @@ import Login from './components/Login';
 import Hero from './components/Hero';
 import Details from './components/Details';
 import Itinerary from './components/Itinerary';
-import RSVP from './components/RSVP';
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -17,7 +17,7 @@ function App() {
       <Hero />
       <Details />
       <Itinerary />
-      <RSVP />
+
     </div>
   );
 }
