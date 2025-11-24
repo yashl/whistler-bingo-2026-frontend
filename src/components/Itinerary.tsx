@@ -2,50 +2,39 @@ import { motion } from 'framer-motion';
 
 const schedule = [
     {
-        day: "Thursday, Feb 20",
-        title: "Arrival & Welcome",
+        day: "Wednesday, Feb 5",
+        title: "Arrival & Birthday Kickoff",
         activities: [
-            "Check-in at Fairmont Chateau (4:00 PM)",
-            "Welcome Drinks at The Mallard Lounge (7:00 PM)",
-            "Casual Dinner"
+            "Arrive to Whistler 🏔️",
+            "Check-in at Crystal Lodge 🏨",
+            "Midnight Birthday Celebration for Kamini 🎂✨"
         ]
     },
     {
-        day: "Friday, Feb 21",
-        title: "First Tracks",
+        day: "Thursday, Feb 6",
+        title: "Whistler & Apres",
         activities: [
-            "Breakfast at Wildflower",
-            "Skiing / Snowboarding",
-            "Apres Ski at Longhorn Saloon",
-            "Free Evening"
+            "Ski on Whistler Side ⛷️",
+            "Party at Longhorn Bar (Apres Ski) 🍻🎉",
+            "Village Stroll & Dinner"
         ]
     },
     {
-        day: "Saturday, Feb 22",
-        title: "The Big Celebration",
+        day: "Friday, Feb 7",
+        title: "Blackcomb Adventure",
         activities: [
-            "Morning Spa or Ski",
-            "Lunch on the Mountain",
-            "Birthday Dinner at Araxi (8:00 PM)",
-            "Night Out in the Village"
+            "Ski on Blackcomb Side 🏂",
+            "Peak 2 Peak Gondola Ride 🚠",
+            "Cozy Dinner in the Village 🍷"
         ]
     },
     {
-        day: "Sunday, Feb 23",
-        title: "Recovery & Relax",
+        day: "Saturday, Feb 8",
+        title: "Seattle Bound",
         activities: [
-            "Late Brunch",
-            "Scenic Peak 2 Peak Gondola Ride",
-            "Hot Tub & Chill",
-            "Farewell Dinner"
-        ]
-    },
-    {
-        day: "Monday, Feb 24",
-        title: "Departure",
-        activities: [
-            "Breakfast & Check-out (11:00 AM)",
-            "Shuttles to Vancouver"
+            "Morning Coffee & Pastries ☕",
+            "Head out to Seattle 🚗💨",
+            "Safe Travels! 👋"
         ]
     }
 ];
