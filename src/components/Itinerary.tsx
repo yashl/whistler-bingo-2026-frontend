@@ -72,7 +72,7 @@ export default function Itinerary() {
                             <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-blue-500 rounded-full border-4 border-white shadow-sm -translate-x-1/2 mt-1.5 z-10"></div>
 
                             {/* Content */}
-                            <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12 text-right'}`}>
+                            <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12 md:text-right'}`}>
                                 <span className="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-sm font-semibold rounded-full mb-2">
                                     {item.day}
                                 </span>
@@ -80,9 +80,8 @@ export default function Itinerary() {
                                 <ul className={`space-y-2 ${index % 2 !== 0 ? 'md:flex md:flex-col md:items-end' : ''}`}>
                                     {item.activities.map((activity, i) => (
                                         <li key={i} className="text-slate-600 text-sm md:text-base flex items-center gap-2">
-                                            {index % 2 === 0 && <span className="w-1.5 h-1.5 bg-blue-300 rounded-full shrink-0 md:hidden"></span>}
+                                            <span className="w-1.5 h-1.5 bg-blue-300 rounded-full shrink-0 md:hidden"></span>
                                             {activity}
-                                            {index % 2 !== 0 && <span className="w-1.5 h-1.5 bg-blue-300 rounded-full shrink-0 md:hidden"></span>}
                                         </li>
                                     ))}
                                 </ul>
