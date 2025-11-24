@@ -7,13 +7,16 @@ const details = [
         title: "Accommodation",
         description: "The Crystal Lodge, Whistler Hotel",
         subtext: "4154 Village Green, Whistler, BC",
-        link: "https://maps.app.goo.gl/CrystalLodge" // Placeholder link, will use a generic search link if specific one isn't known, or I'll search for it.
+        link: "https://maps.app.goo.gl/CrystalLodge",
+        linkText: "View on Map →"
     },
     {
         icon: MapPin,
         title: "Location",
         description: "Whistler Blackcomb",
-        subtext: "World-class skiing & snowboarding"
+        subtext: "",
+        link: "https://www.whistlerblackcomb.com/plan-your-trip/lift-access/passes/whistler-blackcomb-day-pass.aspx",
+        linkText: "Get your ski pass today! →"
     },
     {
         icon: Calendar,
@@ -56,12 +59,12 @@ export default function Details() {
                             <p className="text-slate-500 text-center text-sm mt-1">{item.subtext}</p>
                             {item.link && (
                                 <a
-                                    href="https://www.google.com/maps/search/?api=1&query=The+Crystal+Lodge+Whistler+Hotel"
+                                    href={item.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="block text-center text-blue-600 text-sm mt-3 hover:underline font-medium"
                                 >
-                                    View on Map →
+                                    {item.linkText}
                                 </a>
                             )}
                         </motion.div>
