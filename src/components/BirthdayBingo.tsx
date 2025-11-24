@@ -123,6 +123,44 @@ export default function BirthdayBingo() {
                             </div>
                         </div>
                     </motion.div>
+
+                    {/* Grand Prize Section */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className="mt-12 bg-gradient-to-br from-yellow-50 to-amber-50 p-8 md:p-12 rounded-3xl shadow-xl border border-yellow-200 relative overflow-hidden"
+                    >
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+
+                        <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-8 text-center relative z-10">
+                            🏆 The Grand Slopes Prize <br />
+                            <span className="text-lg md:text-xl font-bold text-slate-600">(Trophy Not Included) ⛷️</span>
+                        </h3>
+
+                        <div className="space-y-8 relative z-10">
+                            {/* Prize 1 */}
+                            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-yellow-100 shadow-sm">
+                                <span className="inline-block bg-blue-100 text-blue-700 font-bold px-3 py-1 rounded-full text-sm mb-3">
+                                    Performance Enhancer 🏔️
+                                </span>
+                                <p className="text-lg text-slate-800">
+                                    The winner receives <strong className="font-black text-slate-900">One (1) Free Professional Ski or Snowboard Wax</strong> provided by the legendary <strong className="font-black text-blue-600">Yash, The Wax Whisperer</strong>.
+                                </p>
+                            </div>
+
+                            {/* Prize 2 */}
+                            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-yellow-100 shadow-sm">
+                                <span className="inline-block bg-purple-100 text-purple-700 font-bold px-3 py-1 rounded-full text-sm mb-3">
+                                    Social Currency 🥇
+                                </span>
+                                <h4 className="text-lg font-bold text-slate-900 mb-2">The Ultimate Tribute</h4>
+                                <p className="text-slate-700 italic text-lg leading-relaxed">
+                                    "The winner earns the undisputed right to <span className="font-bold not-italic">Kamini's Peak 2 Peak Esteem</span>, meaning her respect level for you is higher than the gondola—and equally suspended in disbelief."
+                                </p>
+                            </div>
+                        </div>
+                    </motion.div>
                 </div>
             </div>
         </section>
